@@ -66,7 +66,7 @@ from arashi_sales.all_releases
 group by strftime(リリース日, '%Y')
 ```
 
-<BarChart data={arashi_sales_year} />
+<BarChart data={arashi_sales_year} sort=false />
 
 
 ## UIコンポーネントが多い
