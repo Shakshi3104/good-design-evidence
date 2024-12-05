@@ -71,4 +71,135 @@ group by strftime(リリース日, '%Y')
 
 ## UIコンポーネントが多い
 
+EvidenceはUIコンポーネントが豊富に用意されているので、作りたいと思うUIの大半は標準のコンポーネントの組み合わせだけで作ることができます。
+公式ドキュメントの[All Components](https://docs.evidence.dev/components/all-components)を見ると、グラフの種類が多いだけでなく一般的なUIで必要なアラートやモーダル、タブ、ボタンなど様々なUIコンポーネントが用意されています。
+
+いくつかUIコンポーネントを紹介します。
+
+```sql arashi_sales_year_type
+select
+  strftime(リリース日, '%Y') as release_year,
+  タイプ as release_type,
+  SUM(売上枚数) as sales_counts
+
+from arashi_sales.all_releases
+
+where
+  売上枚数 is not null and (
+  タイプ like '%シングル%' or 
+  タイプ like '%アルバム%' or 
+  タイプ like '%DVD%' or 
+  タイプ like '%Blu-ray%'
+  )
+
+group by strftime(リリース日, '%Y'), タイプ
+
+```
+
+**モーダル**
+<Modal
+  buttonText="Open Modal"
+  title="Sales breakdown"
+>
+  <AreaChart 
+    data={arashi_sales_year_type} 
+    x=release_year 
+    y=sales_counts 
+    series=release_type
+    type=stacked100
+    sort=false
+  />
+</Modal>
+
+**アラート**
+
+<Alert status=info>
+Info: You are my SOUL! SOUL!
+</Alert>
+
+<Alert status=warning>
+Warning: This tornado from the east's gonna hit your town
+</Alert>
+
+<Alert status=danger>
+Danger: 此処に現るのはこの"夢の布陣"
+</Alert>
+
+**ドロップダウンメニューとボタングループ**
+
+```sql release_year
+  select
+      strftime(リリース日, '%Y') as release_year
+  from arashi_sales.all_releases
+  group by release_year
+  order by release_year
+```
+
+<ButtonGroup
+  name=release_type_options
+>
+  <ButtonGroupItem valueLabel="All" value="All" default />
+  <ButtonGroupItem valueLabel="Single" value="Single" />
+  <ButtonGroupItem valueLabel="Album" value="Album" />
+  <ButtonGroupItem valueLabel="DVD/Blu-ray" value="DVD" />
+</ButtonGroup>
+
+<Dropdown
+    name=release_year_filter
+    title="Release Year"
+    data={release_year}
+    value=release_year
+    multiple=true
+    selectAllByDefault=true
+>
+</Dropdown>
+
+
+```sql total_sales
+  select
+    SUM(売上枚数) as sales_count
+
+  from arashi_sales.all_releases
+  where strftime(リリース日, '%Y') in ${inputs.release_year_filter.value}
+```
+
+```sql single_sales
+  select
+    SUM(売上枚数) as sales_count
+
+  from arashi_sales.all_releases
+  where タイプ like '%シングル%'
+  and strftime(リリース日, '%Y') in ${inputs.release_year_filter.value}
+```
+
+```sql album_sales
+  select
+    SUM(売上枚数) as sales_count
+
+  from arashi_sales.all_releases
+  where タイプ like '%アルバム%'
+  and strftime(リリース日, '%Y') in ${inputs.release_year_filter.value}
+```
+
+```sql dvd_sales
+  select
+    SUM(売上枚数) as sales_count
+
+  from arashi_sales.all_releases
+  where (タイプ like '%DVD%' or タイプ like '%Blu-ray%')
+  and strftime(リリース日, '%Y') in ${inputs.release_year_filter.value}
+```
+
+<BigValue
+  data={
+    inputs.release_type_options == 'All' ? total_sales : 
+    inputs.release_type_options == 'Single' ? single_sales :
+    inputs.release_type_options == 'Album' ? album_sales :
+    dvd_sales
+    }
+  value=sales_count
+  title='{inputs.release_type_options} Sales'
+  fmt=num0
+/>
+
 ## レスポンシブルなUI
