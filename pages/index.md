@@ -53,7 +53,8 @@ from arashi_sales.all_releases
 実際に、[New York TimesのGraphics](https://www.nytimes.com/spotlight/graphics)を見てみると、なんとなくEvidenceと似てる気がします。[A Nation of Homebodies](https://www.nytimes.com/2024/10/05/upshot/americans-homebodies-alone-census.html)にある棒グラフとかEvidenceっぽいです。
 
 **New York Timesの棒グラフ by [A Nation of Homebodies](https://www.nytimes.com/2024/10/05/upshot/americans-homebodies-alone-census.html)**
-![bar_chart_nyt](https://static01.nytimes.com/newsgraphics/2024-09-25-time-use-home/1428503b-8964-44d5-b260-979e79e5b15a/_assets/charts-bar_chart-600.png)
+
+![](https://static01.nytimes.com/newsgraphics/2024-09-25-time-use-home/1428503b-8964-44d5-b260-979e79e5b15a/_assets/charts-bar_chart-600.png)
 
 **Evidenceの棒グラフ**
 
@@ -68,13 +69,18 @@ group by strftime(リリース日, '%Y')
 
 <BarChart data={arashi_sales_year} sort=false />
 
+---
 
-## UIコンポーネントが多い
 
-EvidenceはUIコンポーネントが豊富に用意されているので、作りたいと思うUIの大半は標準のコンポーネントの組み合わせだけで作ることができます。
-公式ドキュメントの[All Components](https://docs.evidence.dev/components/all-components)を見ると、グラフの種類が多いだけでなく一般的なUIで必要なアラートやモーダル、タブ、ボタンなど様々なUIコンポーネントが用意されています。
+## 標準でUIコンポーネントが用意されている
 
-いくつかUIコンポーネントを紹介します。
+EvidenceはUIコンポーネントが豊富に用意されているので、作りたいと思うUIの大半は標準のコンポーネントの組み合わせだけで作ることができます。公式ドキュメントの[All Components](https://docs.evidence.dev/components/all-components)を見ると、グラフの種類が多いだけでなく一般的なUIで必要なアラートやモーダル、タブ、ボタンなど様々なUIコンポーネントが用意されています。
+
+UIコンポーネントが豊富にあることは、車輪の再開発を防ぐという側面もあると思います。標準のコンポーネントでいい感じのUIが作れることで、データ可視化というコアの実装に集中できるようになっていると感じました。
+
+また、EvidenceはMarkdownベースで、タイトルやボタンなどの要素が正しいHTMLタグとともにレンダリングされるので、ウェブアクセシビリティの確保も自然と取り組めると思います。(参考: [アクセシビリティを考慮したHTMLコーディングガイド](https://zenn.dev/fuqda/articles/92f22e98b989de), [Webアクセシビリティですべきことをまとめてみる（HTML限定）](https://qiita.com/bon127/items/0e01c5501d2f160e9efb))
+
+この記事では、いくつかのUIコンポーネントを紹介します。
 
 ```sql arashi_sales_year_type
 select
@@ -202,4 +208,20 @@ Danger: 此処に現るのはこの"夢の布陣"
   fmt=num0
 />
 
+---
+
 ## レスポンシブルなUI
+
+EvidenceはレスポンシブルなUIなので、特に個別対応することなく、PCやスマホ、タブレットにUIが最適化されます。このページをPCやスマホなどのさまざまなデバイスで見てみてください。いい感じに表示されていると思います。
+
+この辺は[Steep](https://steep.app)というBIツールと思想が似ているところだと思いました。今やPCだけでなくスマホやタブレットなどのさまざまなデバイスでデータを見る時代です。Evidenceはモダンなツールであるため、時代に合ったUIを提供してくれていると感じました。
+
+![](https://evidence.dev/mac-phone-7.png)
+
+---
+
+# おわりに
+
+この記事では、勝手にグッドデザインデータ可視化ツール賞 2024という賞を作り、勝手にEvidenceに授与し、受賞理由っぽくEvidenceのデザイン的に優れたところを紹介しました。New York Timesのデータジャーナリズムのような外観と感触の品質を提供するというコンセプトが最大の受賞理由です。
+
+優れたUIやユーザー体験を提供することで、ユーザーがよりデータを活用しやすくなります。**デザインの力で、データを価値あるものに**するためには、Evidenceのようなデータ可視化ツールが必要なのではと感じました。
