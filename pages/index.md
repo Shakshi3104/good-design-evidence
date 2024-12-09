@@ -7,7 +7,7 @@ title: Evidence - 🏆 グッドデザインデータ可視化ツール賞 2024
 # はじめに
 
 この記事ではEvidenceというBIツールのデザイン的に優れているなぁと思うところを紹介していきます。
-勝手にグッドデザインデータ可視化ツール賞 2024を授与します🎉 おめでとう〜🎉 (JDPによる[GOOD DESIGN AWARD](https://www.g-mark.org/)とは何の関係もありません)
+勝手にグッドデザインデータ可視化ツール賞 2024を授与します🏆 おめでとう〜🎉 (JDPによる[GOOD DESIGN AWARD](https://www.g-mark.org/)とは何の関係もありません)
 
 この記事も[「Evidence使ってみた」をEvidenceで書いてみた](https://advent-calendar-evidence.evidence.app)と同じようにEvidenceで書いてみました。
 
@@ -30,7 +30,7 @@ from arashi_sales.all_releases
 
 </Details>
 
-ちなみに、このデータ+αを使って嵐のダッシュボードも作ってます: [ARASHI Songs](https://shakshi-arashi-songs.evidence.app)
+ちなみに、このデータ+αを使って嵐のダッシュボードもEvidenceで作ってます: [ARASHI Songs](https://shakshi-arashi-songs.evidence.app)
 
 特徴や使い方は、[「Evidence使ってみた」をEvidenceで書いてみた](https://advent-calendar-evidence.evidence.app)や下記の記事を読んでみてください。
 
@@ -74,7 +74,7 @@ group by strftime(リリース日, '%Y')
 
 ## 標準でUIコンポーネントが用意されている
 
-EvidenceはUIコンポーネントが豊富に用意されているので、作りたいと思うUIの大半は標準のコンポーネントの組み合わせだけで作ることができます。公式ドキュメントの[All Components](https://docs.evidence.dev/components/all-components)を見ると、グラフの種類が多いだけでなく一般的なUIで必要なアラートやモーダル、タブ、ボタンなど様々なUIコンポーネントが用意されています。
+EvidenceはUIコンポーネントが豊富に用意されているので、作りたいと思うUIの大半は標準のコンポーネントの組み合わせだけで作ることができます。公式ドキュメントの[All Components](https://docs.evidence.dev/components/all-components)によると、グラフの種類が多いだけでなく一般的なUIで必要なアラートやモーダル、タブ、ボタンなど様々なUIコンポーネントが用意されています。
 
 UIコンポーネントが豊富にあることは、車輪の再開発を防ぐという側面もあると思います。標準のコンポーネントでいい感じのUIが作れることで、データ可視化というコアの実装に集中できるようになっていると感じました。
 
@@ -131,7 +131,7 @@ Warning: This tornado from the east's gonna hit your town
 Danger: 此処に現るのはこの"夢の布陣"
 </Alert>
 
-**ドロップダウンメニューとボタングループ**
+**ボタングループとドロップダウンメニュー**
 
 ```sql release_year
   select
@@ -214,7 +214,7 @@ Danger: 此処に現るのはこの"夢の布陣"
 
 EvidenceはレスポンシブルなUIなので、特に個別対応することなく、PCやスマホ、タブレットにUIが最適化されます。このページをPCやスマホなどのさまざまなデバイスで見てみてください。いい感じに表示されていると思います。
 
-この辺は[Steep](https://steep.app)というBIツールと思想が似ているところだと思いました。今やPCだけでなくスマホやタブレットなどのさまざまなデバイスでデータを見る時代です。Evidenceはモダンなツールであるため、時代に合ったUIを提供してくれていると感じました。
+この辺は[Steep](https://steep.app)というBIツールと思想が似ているところだと思いました。今やPCだけでなくスマホやタブレットなどのさまざまなデバイスでデータを見る時代です。Evidenceはモダンなツールであるため、今の時代に合ったUIを提供してくれていると感じました。
 
 ![](https://evidence.dev/mac-phone-7.png)
 
@@ -224,4 +224,4 @@ EvidenceはレスポンシブルなUIなので、特に個別対応すること�
 
 この記事では、勝手にグッドデザインデータ可視化ツール賞 2024という賞を作り、勝手にEvidenceに授与し、受賞理由っぽくEvidenceのデザイン的に優れたところを紹介しました。New York Timesのデータジャーナリズムのような外観と感触の品質を提供するというコンセプトが最大の受賞理由です。
 
-優れたUIやユーザー体験を提供することで、ユーザーがよりデータを活用しやすくなります。**デザインの力で、データを価値あるものに**するためには、Evidenceのようなデータ可視化ツールが必要なのではと感じました。
+優れたUIやユーザー体験を提供することで、ユーザーがよりデータを活用しやすくなります。**デザインの力で、データを価値あるものに**するためには、Evidenceのようなデータ可視化ツールが必要なのでは?と感じました。
