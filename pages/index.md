@@ -127,8 +127,8 @@ Info: You are my SOUL! SOUL!
 Warning: This tornado from the east's gonna hit your town
 </Alert>
 
-<Alert status=danger>
-Danger: 此処に現るのはこの"夢の布陣"
+<Alert status=negative>
+Negative: 此処に現るのはこの"夢の布陣"
 </Alert>
 
 **ボタングループとドロップダウンメニュー**
@@ -217,6 +217,14 @@ EvidenceはレスポンシブルなUIなので、特に個別対応すること�
 この辺は[Steep](https://steep.app)というBIツールと思想が似ているところだと思いました。今やPCだけでなくスマホやタブレットなどのさまざまなデバイスでデータを見る時代です。Evidenceはモダンなツールであるため、今の時代に合ったUIを提供してくれていると感じました。
 
 ![](https://evidence.dev/mac-phone-7.png)
+
+---
+
+## ダークモードに対応している
+
+2024年12月のアップデートで、カラーテーマの設定とダークモードに対応しました。カラーテーマは、YAML形式の設定ファイルにカラーコードを書くだけで設定できます。また、ダークモードもYAMLの設定ファイルで制御できます。特別な対応をせずにダークモードに対応できるのもEvidenceがモダンなツールであるためだと思います。
+
+![](https://evidence.dev/blog/themes/themes-card-notext.png)
 
 ---
 
